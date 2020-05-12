@@ -1,8 +1,9 @@
 import "phaser";
+import './sass/style.scss'
 
 const game = new Phaser.Game({
     type: Phaser.AUTO,
     parent: "phaser-canvas",
-    width: 800,
-    height: 500
+    width: 421,
+    height: 750
 });

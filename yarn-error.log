@@ -1,0 +1,61 @@
+Arguments: 
+  /home/yosept/.nvm/versions/node/v13.11.0/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/yosept/.rbenv/shims:/home/yosept/.deno/bin/:/home/yosept/.vscode-server/bin/d69a79b73808559a91206d73d7717ff5f798f23c/bin:/home/yosept/.rbenv/shims:/home/yosept/.deno/bin/:/home/yosept/.nvm/versions/node/v13.11.0/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/d/Users/final/AppData/Roaming/nvm:/mnt/d/Program Files/nodejs:/mnt/c/ProgramData/chocolatey/bin:/mnt/d/Program Files (x86)/Yarn/bin/:/mnt/c/Users/final/scoop/shims:/mnt/c/Users/final/AppData/Local/Microsoft/WindowsApps:/mnt/d/Users/final/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/d/Users/final/AppData/Roaming/nvm:/mnt/d/Program Files/nodejs:/mnt/c/Users/final/AppData/Local/Yarn/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  13.11.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/yosept/htcdocs/Endless-Jumper/package.json: Unexpected token } in JSON at position 393
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:310:30)
+      at /usr/share/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+      "name": "github-game",
+      "version": "0.0.1",
+      "description": "A game for Game Off 2018",
+      "private": true,
+      "scripts": {
+          "start": "webpack --mode=development --watch",
+          "build": "webpack --mode=production",
+          "watch": "webpack --watch"
+      },
+      "author": "Christopher Geary",
+      "license": "MIT",
+      "dependencies": {
+          "phaser": "^3.15.1",
+      },
+      "devDependencies": {
+          "webpack": "^4.43.0",
+          "webpack-cli": "^3.1.2",
+          "@babel/core": "^7.1.2",
+          "@babel/preset-env": "^7.1.0",
+          "babel-loader": "^8.0.4",
+          "browser-sync": "^2.26.3",
+          "browser-sync-webpack-plugin": "^2.2.2",
+          "clean-webpack-plugin": "^3.0.0",
+          "html-webpack-plugin": "^3.2.0",
+          "css-loader": "^3.5.3",
+          "sass": "^1.26.5",
+          "sass-loader": "^8.0.2",
+          "style-loader": "^1.2.1"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
@@ -6,7 +7,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const isProduction = process.env.NODE_ENV === `production`;
 
 module.exports = {
-    mode: isProduction ? `production` : `development`,
     module: {
         rules: [
             {
@@ -29,9 +29,38 @@ module.exports = {
                     // Compiles Sass to CSS
                     'sass-loader',
                 ],
-            }
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/,
+                loader: 'image-webpack-loader',
+                // Specify enforce: 'pre' to apply the loader
+                // before url-loader/svg-url-loader
+                // and not duplicate it in rules with them
+                enforce: 'pre',
+              },
+              {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      // limit: 8000, // Convert images < 8kb to base64 strings
+                      name: 'images/[hash]-[name].[ext]',
+                    },
+                  },
+                ],
+              },
         ]
     },
+    entry: [
+        path.resolve('src', 'index.js'),
+        // path.resolve('src', 'packages', 'countries.js'),
+      ],
+      output: {
+        path: path.resolve('dist'),
+        filename: '[name].[contenthash].js',
+        // chunkFilename: '[name].[contenthash].js',
+      },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({

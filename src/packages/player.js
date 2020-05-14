@@ -6,8 +6,8 @@ const player = (scene) => {
   let playerBody;
   scene.load.image('Doodler', Doodler);
 
-  const create = () => {
-    playerBody = scene.matter.add.image(200, 50, 'Doodler', null);
+  const create = (x,y) => {
+    playerBody = scene.matter.add.image(x, y, 'Doodler', null);
     playerBody.setRectangle(30, 48, {
       mass: 30,
       frictionAir: 0.01,
@@ -20,7 +20,6 @@ const player = (scene) => {
         }
       }
     })
-    console.log(playerBody);
     playerBody.setFixedRotation(0)
 
   }

@@ -1,6 +1,8 @@
 import Phaser from 'phaser'
 import platform from '../images/platform.png'
 
+let oneNOne = true
+
 const basicPlatform = (scene) => {
   let jumpable = 0x0002
   let notJumpable = 0x0004
@@ -28,9 +30,10 @@ const basicPlatform = (scene) => {
 
   const addAgain = (camera) => {
     basicPlatformBody.setPosition(
-      Phaser.Math.Between(camera.x, camera.x + 500),
-      camera.scrollY + 50
+      Phaser.Math.Between(0, 421),
+      oneNOne ? Phaser.Math.Between(camera.scrollY, camera.scrollY - 300) : camera.scrollY
     )
+    oneNOne = !oneNOne
   }
 
   const setTint = () => {

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import './sass/style.scss';
-import { gameScene, menuScene } from './scenes/sceneLoader';
+import { gameScene, menuScene, instructionsScene } from './scenes/sceneLoader';
 
 window.onload = () => {
     let canvas = document.querySelector('canvas')
@@ -8,7 +8,6 @@ window.onload = () => {
     document.getElementById('fullscreen').style.paddingLeft = `${canvasWidth - 40}px`
     document.querySelector('#fullscreen i').addEventListener('click', event => canvas.requestFullscreen())
 }
-
 
 const config = {
     type: Phaser.AUTO,
@@ -20,7 +19,7 @@ const config = {
         height: 750
     },
     backgroundColor: '#46a6ce',
-    scene: [gameScene, menuScene],
+    scene: [instructionsScene, menuScene, gameScene],
     physics: {
         default: 'matter',
         matter: {

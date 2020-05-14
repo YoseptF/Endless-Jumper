@@ -1,4 +1,4 @@
 import gameScene from './gameScene';
-// import menuScene from './menuScene';
+import menuScene from './menuScene';
 
-export { gameScene };
+export { gameScene, menuScene };

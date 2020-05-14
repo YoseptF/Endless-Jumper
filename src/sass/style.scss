@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -13,23 +13,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2f3035;
+  background: #2f80a3;
 }
 
 #phaser-canvas {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
   position: relative;
-  #fullscreen{
+  #fullscreen {
     margin-top: 12px;
     position: absolute;
     left: 50%;
     top: 0;
-    transform: translate(-50%,0);
-    i{
+    transform: translate(-50%, 0);
+    i {
       background: rgba(0, 0, 0, 0.219);
       border-radius: 100%;
       padding: 8px;
-      &:hover{
+      &:hover {
         background: rgba(0, 0, 0, 0.377);
         cursor: pointer;
       }

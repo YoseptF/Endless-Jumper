@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import './sass/style.scss';
-import { gameScene } from './scenes/sceneLoader';
+import { gameScene, menuScene } from './scenes/sceneLoader';
 
 window.onload = () => {
     let canvas = document.querySelector('canvas')
@@ -19,8 +19,8 @@ const config = {
         width: 421,
         height: 750
     },
-    backgroundColor: '#1b1464',
-    scene: [gameScene],
+    backgroundColor: '#46a6ce',
+    scene: [gameScene, menuScene],
     physics: {
         default: 'matter',
         matter: {

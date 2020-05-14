@@ -7,9 +7,10 @@ const player = (scene) => {
   scene.load.image('Doodler', Doodler);
 
   const create = () => {
-    playerBody = scene.matter.add.image(200, 0, 'Doodler', null);
+    playerBody = scene.matter.add.image(200, 50, 'Doodler', null);
     playerBody.setRectangle(30, 48, {
       mass: 30,
+      frictionAir: 0.01,
       collisionFilter: {
         mask: jumpable
       },
@@ -19,9 +20,15 @@ const player = (scene) => {
         }
       }
     })
+    console.log(playerBody);
     playerBody.setFixedRotation(0)
 
   }
+
+  const destroy = () => {
+    playerBody.destroy()
+  }
+
   const thrustLeft = (force) => {
     playerBody.thrustLeft(force)
   }
@@ -31,15 +38,23 @@ const player = (scene) => {
   const thrust = (force) => {
     playerBody.thrust(force)
   }
+  const setVelocityX = (x,y) => {
+    playerBody.setVelocityX(x,y)
+  }
 
   return {
     create,
+    destroy,
+    setVelocityX,
     thrustLeft,
     thrustBack,
     thrust,
     get x() { return playerBody.x },
     get y() { return playerBody.y },
-    get scrollFactorY() { return playerBody.scrollFactorY }
+    set x(newX) { playerBody.x = newX },
+    set y(newY) { playerBody.y = newY },
+    get scrollFactorY() { return playerBody.scrollFactorY },
+    get velocity() { return playerBody.body.velocity }
   }
 }
 

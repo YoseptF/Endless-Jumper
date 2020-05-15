@@ -1,51 +1,49 @@
-import Doodler from '../images/Doodler.png'
+import Doodler from '../images/Doodler.png';
 
 const player = (scene) => {
-  let jumpable = 0x0002
-  let notJumpable = 0x0004
+  const jumpable = 0x0002;
   let playerBody;
   scene.load.image('Doodler', Doodler);
 
-  const create = (x,y) => {
+  const create = (x, y) => {
     playerBody = scene.matter.add.image(x, y, 'Doodler', null);
     playerBody.setRectangle(30, 48, {
       mass: 30,
       frictionAir: 0.01,
       collisionFilter: {
-        mask: jumpable
+        mask: jumpable,
       },
       render: {
         sprite: {
-          xOffset: -0.15
-        }
-      }
-    })
-    playerBody.setFixedRotation(0)
-
-  }
+          xOffset: -0.15,
+        },
+      },
+    });
+    playerBody.setFixedRotation(0);
+  };
 
   const destroy = () => {
-    playerBody.destroy()
-  }
+    playerBody.destroy();
+  };
 
   const thrustLeft = (force) => {
-    playerBody.thrustLeft(force)
-  }
+    playerBody.thrustLeft(force);
+  };
   const thrustBack = (force) => {
-    playerBody.thrustBack(force)
-  }
+    playerBody.thrustBack(force);
+  };
   const thrust = (force) => {
-    playerBody.thrust(force)
-  }
+    playerBody.thrust(force);
+  };
   const setVelocityX = (x) => {
-    playerBody.setVelocityX(x)
-  }
+    playerBody.setVelocityX(x);
+  };
   const setVelocityY = (y) => {
-    playerBody.setVelocityY(y)
-  }
+    playerBody.setVelocityY(y);
+  };
   const freeze = () => {
-    playerBody.setFrictionAir(100)
-  }
+    playerBody.setFrictionAir(100);
+  };
 
   return {
     create,
@@ -56,13 +54,13 @@ const player = (scene) => {
     thrustLeft,
     thrustBack,
     thrust,
-    get x() { return playerBody.x },
-    get y() { return playerBody.y },
-    set x(newX) { playerBody.x = newX },
-    set y(newY) { playerBody.y = newY },
-    get scrollFactorY() { return playerBody.scrollFactorY },
-    get velocity() { return playerBody.body.velocity }
-  }
-}
+    get x() { return playerBody.x; },
+    get y() { return playerBody.y; },
+    set x(newX) { playerBody.x = newX; },
+    set y(newY) { playerBody.y = newY; },
+    get scrollFactorY() { return playerBody.scrollFactorY; },
+    get velocity() { return playerBody.body.velocity; },
+  };
+};
 
-export { player }
+export default player;

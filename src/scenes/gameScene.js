@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { gameController } from '../packages/gameController';
 
-let gmController
+let gmController;
 
 const gameScene = new Phaser.Class({
 
@@ -12,25 +12,24 @@ const gameScene = new Phaser.Class({
     function gameScene() {
       Phaser.Scene.call(this, { key: 'gameScene' });
       window.GAME = this;
-      gmController = gameController(this)
+      gmController = gameController(this);
     },
 
   preload() {
-    gmController.preload(15)
+    gmController.preload(15);
   },
 
   create() {
     gmController.create(
       {
-        style: 'random'
-      }
-    )
+        style: 'random',
+      },
+    );
   },
 
   update() {
-    gmController.update()
+    gmController.update();
   },
-
 
 
 });

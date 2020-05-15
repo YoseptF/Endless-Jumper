@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { button } from '../packages/UI';
+import button from '../packages/UI';
 
 const creditsScene = new Phaser.Class({
 
@@ -22,24 +22,24 @@ const creditsScene = new Phaser.Class({
       'Back',
       'Roboto',
       () => {
-        this.scene.pause()
-        this.scene.stop()
-        this.scene.start('menuScene')
-      }
-    )
+        this.scene.pause();
+        this.scene.stop();
+        this.scene.start('menuScene');
+      },
+    );
 
     this.add.text(120, 200, 'Code: Joseph Flores', {
-      align: 'center'
-    })
+      align: 'center',
+    });
     this.add.text(100, 250, 'Original Idea: Lima Sky', {
-      align: 'center'
-    })
+      align: 'center',
+    });
     this.add.text(120, 300, 'Music: Patric Catani', {
-      align: 'center'
-    })
+      align: 'center',
+    });
     this.add.text(135, 350, 'Engine: Phaser 3', {
-      align: 'center'
-    })
+      align: 'center',
+    });
   },
 
   update() {

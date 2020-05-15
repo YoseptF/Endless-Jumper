@@ -1,8 +1,8 @@
-import 'regenerator-runtime'
+import 'regenerator-runtime';
 
 const compare = (a, b) => {
-  const userA = parseInt(a.score);
-  const userB = parseInt(b.score);
+  const userA = parseInt(a.score, 10);
+  const userB = parseInt(b.score, 10);
 
   let comparison = 0;
   if (userA < userB) {
@@ -11,50 +11,46 @@ const compare = (a, b) => {
     comparison = -1;
   }
   return comparison;
-}
+};
 
 const getTopScores = async () => {
-  var requestOptions = {
+  const requestOptions = {
     method: 'GET',
-    redirect: 'follow'
+    redirect: 'follow',
   };
 
   try {
-    let response = await fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LWWHqD0A5Z7ib3isiCmA/scores", requestOptions)
-    let json = await response.json()
-    let sorted = json.result.sort(compare)
-    sorted.splice(10)
-    return sorted
+    const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LWWHqD0A5Z7ib3isiCmA/scores', requestOptions);
+    const json = await response.json();
+    const sorted = json.result.sort(compare);
+    sorted.splice(10);
+    return sorted;
+  } catch (e) {
+    return e;
   }
-  catch{
-    //something
-  }
-}
+};
 
 const setNewScore = async (user, score) => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  const myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
 
-  var urlencoded = new URLSearchParams();
-  urlencoded.append("user", user);
-  urlencoded.append("score", score);
+  const urlencoded = new URLSearchParams();
+  urlencoded.append('user', user);
+  urlencoded.append('score', score);
 
-  var requestOptions = {
+  const requestOptions = {
     method: 'POST',
     headers: myHeaders,
     body: urlencoded,
-    redirect: 'follow'
+    redirect: 'follow',
   };
 
   try {
-    const response = await fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LWWHqD0A5Z7ib3isiCmA/scores", requestOptions)
-    const result = await response.text()
-    console.log(user, score);
-    console.log(result);
+    const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LWWHqD0A5Z7ib3isiCmA/scores', requestOptions);
+    response.text();
+  } catch (e) {
+    // doSomething
   }
-  catch{
-    //doSomething
-  }
-}
+};
 
-export { getTopScores, setNewScore }
+export { getTopScores, setNewScore };

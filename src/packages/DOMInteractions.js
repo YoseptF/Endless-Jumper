@@ -2,48 +2,47 @@ const gyroscopePlayerMovement = (plyr) => {
   if (window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', event => {
       if (event.gamma < -3) {
-        plyr.setVelocityX(event.gamma * 0.4)
+        plyr.setVelocityX(event.gamma * 0.4);
       }
       if (event.gamma > 3) {
-        plyr.setVelocityX(event.gamma * 0.4)
+        plyr.setVelocityX(event.gamma * 0.4);
       }
-    }, true)
+    }, true);
   }
-}
+};
 
 const setDOMUsername = () => {
-  const username = localStorage.getItem('username')
-  const userShown = username === null ? 'plyr' : username
+  const username = localStorage.getItem('username');
+  const userShown = username === null ? 'plyr' : username;
   const usernameInput = `
   <input type="text" placeholder="Enter your username" value="${userShown}" pattern="[A-Za-z0-9]+"></input>
-  `
+  `;
 
-  document.querySelector('.usernameInput').innerHTML = usernameInput
-}
+  document.querySelector('.usernameInput').innerHTML = usernameInput;
+};
 
 const getDOMUsername = () => {
-  const username = document.querySelector('.usernameInput input').value
-  localStorage.setItem('username', username)
-  console.log(username);
-  document.querySelector('.usernameInput').innerHTML = ''
-  return username
-}
+  const username = document.querySelector('.usernameInput input').value;
+  localStorage.setItem('username', username);
+  document.querySelector('.usernameInput').innerHTML = '';
+  return username;
+};
 
 const setDOMLoading = (selector) => {
-  document.querySelector(selector).innerHTML = '<i class="fas fa-spinner fa-spin"></i>'
-}
+  document.querySelector(selector).innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+};
 
 const setDOMleaderboard = (top) => {
-  let leaderBoardsWrapper = document.querySelector('.usernameInput')
-  let ScoresTr = ``
+  const leaderBoardsWrapper = document.querySelector('.usernameInput');
+  let ScoresTr = '';
   top.forEach(val => {
     ScoresTr += `
     <tr>
       <td>${val.user}</td>
       <td>${val.score}</td>
     </tr>
-    `
-  })
+    `;
+  });
   leaderBoardsWrapper.innerHTML = `
   <table>
     <thead>
@@ -59,12 +58,12 @@ const setDOMleaderboard = (top) => {
       ${ScoresTr}
     </tbody>
   </table>
-  `
-}
+  `;
+};
 
 const deleteDOMLeaderboard = () => {
-  document.querySelector('.usernameInput').innerHTML = ''
-}
+  document.querySelector('.usernameInput').innerHTML = '';
+};
 
 export {
   gyroscopePlayerMovement,
@@ -72,5 +71,5 @@ export {
   getDOMUsername,
   setDOMleaderboard,
   deleteDOMLeaderboard,
-  setDOMLoading
-}
+  setDOMLoading,
+};

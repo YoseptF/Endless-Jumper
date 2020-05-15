@@ -1,15 +1,15 @@
 import Phaser from 'phaser';
-import { button } from '../packages/UI';
+import button from '../packages/UI';
 import { getTopScores } from '../packages/leaderboard';
-import 'regenerator-runtime'
-import { setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading } from '../packages/DOMInteractions'
+import 'regenerator-runtime';
+import { setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading } from '../packages/DOMInteractions';
 
 const setLeaderboard = async () => {
-  const topScores = await getTopScores()
-  setDOMleaderboard(topScores)
-}
+  const topScores = await getTopScores();
+  setDOMleaderboard(topScores);
+};
 
-let alert
+let alert;
 
 const leaderboardScene = new Phaser.Class({
 
@@ -25,8 +25,8 @@ const leaderboardScene = new Phaser.Class({
   },
 
   create() {
-    setDOMLoading('.usernameInput')
-    setLeaderboard()
+    setDOMLoading('.usernameInput');
+    setLeaderboard();
     button(
       this,
       5,
@@ -34,28 +34,27 @@ const leaderboardScene = new Phaser.Class({
       'Back',
       'Roboto',
       () => {
-        deleteDOMLeaderboard()
-        this.scene.stop()
-        this.scene.start('menuScene')
-      }
-    )
+        deleteDOMLeaderboard();
+        this.scene.stop();
+        this.scene.start('menuScene');
+      },
+    );
 
     alert = this.add.text(200, 300, 'Do to a browser limitation, you need to exit fullsreen to see the leaderboards', {
       fontSize: '20px',
       stroke: '#fff',
       color: '#000',
       wordWrap: {
-        width: 140
-      }
-    })
-
+        width: 140,
+      },
+    });
   },
 
   update() {
-    if (window.innerHeight == screen.height) {
-      alert.setVisible(true)
+    if (window.innerHeight === window.screen.height) {
+      alert.setVisible(true);
     } else {
-      alert.setVisible(false)
+      alert.setVisible(false);
     }
   },
 

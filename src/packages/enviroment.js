@@ -1,4 +1,4 @@
-import sky from '../images/sky.png'
+import sky from '../images/sky.png';
 
 const background = (scene) => {
   let backgroundBody;
@@ -18,4 +18,4 @@ const background = (scene) => {
   };
 };
 
-export { background }
+export default background;

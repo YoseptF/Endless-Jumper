@@ -10,6 +10,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: 'file-loader',
+        options: {
+          // limit: 8000, // Convert images < 8kb to base64 strings
+          name: 'html/[name].[ext]',
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {

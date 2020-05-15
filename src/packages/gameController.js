@@ -17,6 +17,7 @@ let gammaMultiplier = 0.015
 let cursors
 let points
 let alive = true
+let alert = null
 
 const setMarkers = async (scene) => {
   let top = await getTopScores()
@@ -159,8 +160,17 @@ const startGameOver = (scene) => {
       scene.scene.start('menuScene')
     }
   )
+  alert = scene.add.text(95, 360 + scene.cameras.main.scrollY,
+    'Exit fullscreeen to change your username', {
+    fontSize: '20px',
+    stroke: '#fff',
+    color: '#000',
+    wordWrap: {
+      width: 260
+    }
 
-  // scene.scene.pause()
+  })
+
 }
 
 const inspectWorldview = (scene) => {
@@ -222,6 +232,13 @@ const gameController = (scene) => {
       updateHeight(scene)
       jump = PlayerMovement(jump, plyr, cursors)
       inspectWorldview(scene)
+    }
+    if (alert) {
+      if (window.innerHeight == screen.height) {
+        alert.setVisible(true)
+      } else {
+        alert.setVisible(false)
+      }
     }
   }
 

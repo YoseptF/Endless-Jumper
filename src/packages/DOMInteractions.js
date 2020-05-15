@@ -29,9 +29,11 @@ const getDOMUsername = () => {
   return username
 }
 
+const setDOMLoading = (selector) => {
+  document.querySelector(selector).innerHTML = '<i class="fas fa-spinner fa-spin"></i>'
+}
+
 const setDOMleaderboard = (top) => {
-  console.log('dogo');
-  console.log('top: ', top);
   let leaderBoardsWrapper = document.querySelector('.usernameInput')
   let ScoresTr = ``
   top.forEach(val => {
@@ -64,4 +66,11 @@ const deleteDOMLeaderboard = () => {
   document.querySelector('.usernameInput').innerHTML = ''
 }
 
-export { gyroscopePlayerMovement, setDOMUsername, getDOMUsername, setDOMleaderboard, deleteDOMLeaderboard }
+export {
+  gyroscopePlayerMovement,
+  setDOMUsername,
+  getDOMUsername,
+  setDOMleaderboard,
+  deleteDOMLeaderboard,
+  setDOMLoading
+}

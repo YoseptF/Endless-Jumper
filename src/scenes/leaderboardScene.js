@@ -2,12 +2,14 @@ import Phaser from 'phaser';
 import { button } from '../packages/UI';
 import { getTopScores } from '../packages/leaderboard';
 import 'regenerator-runtime'
-import { setDOMleaderboard, deleteDOMLeaderboard } from '../packages/DOMInteractions'
+import { setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading } from '../packages/DOMInteractions'
 
 const setLeaderboard = async () => {
   const topScores = await getTopScores()
   setDOMleaderboard(topScores)
 }
+
+let alert
 
 const leaderboardScene = new Phaser.Class({
 
@@ -23,6 +25,7 @@ const leaderboardScene = new Phaser.Class({
   },
 
   create() {
+    setDOMLoading('.usernameInput')
     setLeaderboard()
     button(
       this,
@@ -37,10 +40,23 @@ const leaderboardScene = new Phaser.Class({
       }
     )
 
+    alert = this.add.text(200, 300, 'Do to a browser limitation, you need to exit fullsreen to see the leaderboards', {
+      fontSize: '20px',
+      stroke: '#fff',
+      color: '#000',
+      wordWrap: {
+        width: 140
+      }
+    })
 
   },
 
   update() {
+    if (window.innerHeight == screen.height) {
+      alert.setVisible(true)
+    } else {
+      alert.setVisible(false)
+    }
   },
 
 });

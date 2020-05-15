@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
 import player from '../packages/player';
 import background from '../packages/enviroment';
 import basicPlatform from '../packages/platforms';

@@ -1,4 +1,4 @@
-import 'regenerator-runtime';
+import 'regenerator-runtime'; // eslint-disable-line import/no-unresolved
 
 const compare = (a, b) => {
   const userA = parseInt(a.score, 10);

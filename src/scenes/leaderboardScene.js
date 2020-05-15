@@ -1,7 +1,7 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
 import button from '../packages/UI';
 import { getTopScores } from '../packages/leaderboard';
-import 'regenerator-runtime';
+import 'regenerator-runtime'; // eslint-disable-line import/no-unresolved
 import { setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading } from '../packages/DOMInteractions';
 
 const setLeaderboard = async () => {

@@ -1,11 +1,11 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
 import player from './player';
 import background from './enviroment';
 import basicPlatform from './platforms';
 import { gyroscopePlayerMovement, setDOMUsername, getDOMUsername } from './DOMInteractions';
 import button from './UI';
 import { getTopScores, setNewScore } from './leaderboard';
-import 'regenerator-runtime';
+import 'regenerator-runtime'; // eslint-disable-line import/no-unresolved
 
 
 let bckg;

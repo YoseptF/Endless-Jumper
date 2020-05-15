@@ -1,10 +1,8 @@
 const path = require('path');
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const isProduction = process.env.NODE_ENV === `production`;
 
 module.exports = {
   module: {
@@ -21,11 +19,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: `babel-loader`,
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
         test: /\.s[ac]ss$/i,
@@ -58,7 +56,7 @@ module.exports = {
           },
         ],
       },
-    ]
+    ],
   },
   entry: [
     path.resolve('src', 'index.js'),
@@ -72,19 +70,19 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.ejs",
-      title: "Endless Jumper",
-      favicon: './src/images/favicon.ico'
+      template: './src/index.ejs',
+      title: 'Endless Jumper',
+      favicon: './src/images/favicon.ico',
     }),
     new BrowserSyncPlugin({
       https: true,
-      host: "localhost",
+      host: 'localhost',
       port: 3000,
-      server: { baseDir: ["dist"] }
+      server: { baseDir: ['dist'] },
     }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
-      WEBGL_RENDERER: JSON.stringify(true)
-    })
-  ]
+      WEBGL_RENDERER: JSON.stringify(true),
+    }),
+  ],
 };

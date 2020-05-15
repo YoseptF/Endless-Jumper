@@ -33,6 +33,8 @@ You want to try it out without any installation? YOU CAN! Just check out the [li
 
 While game __can__ be played on a pc, it was thought to be played on a phone, it uses the accelerometer to move the Doodler, although It was just tested on Chrome and Firefox (both for android... sorry iPhone users :o, you can play on the browser)
 
+YOU CAN EVEN PLAY IT ON FULLSCREEN MODE!! (the icon on the top right, and again only for mobile users)
+
 ![doodleWeb](./src/images/doodlerWeb.gif)
 
 # Development Setup

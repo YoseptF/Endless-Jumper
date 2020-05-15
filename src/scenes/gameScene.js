@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser';// eslint-disable-line import/no-unresolved
 import { gameController } from '../packages/gameController';
 
 let gmController;

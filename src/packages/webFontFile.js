@@ -1,5 +1,5 @@
 import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
-import WebFontLoader from 'webfontloader';
+import WebFontLoader from 'webfontloader';// eslint-disable-line import/no-unresolved
 
 class WebFontFile extends Phaser.Loader.File {
   constructor(loader, fontNames, service = 'google') {

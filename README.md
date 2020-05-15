@@ -29,7 +29,7 @@ This game is based on [Doodle Jump](https://apps.apple.com/us/app/doodle-jump-in
 
 # Try it out!!
 
-You want to try it out without any installation? YOU CAN! Just check out the [live version]().
+You want to try it out without any installation? YOU CAN! Just check out the [live version](https://endless-jumper.netlify.app/).
 
 While game __can__ be played on a pc, it was thought to be played on a phone, it uses the accelerometer to move the Doodler, although It was just tested on Chrome and Firefox (both for android... sorry iPhone users :o, you can play on the browser)
 

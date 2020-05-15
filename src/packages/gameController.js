@@ -98,7 +98,7 @@ const chooseJumplablePlatforms = (scene, platstoChoose, playerToCheck) => {
   platstoChoose.forEach(plat => {
     if (playerToCheck.y + 22 < plat.y) {
       plat.collisionCategory = 'jumpable';
-    } else if (playerToCheck.y < plat.y + 22) {
+    } else if (playerToCheck.y > plat.y + 22) {
       plat.collisionCategory = 'notJumpable';
     }
     if (plat.y > scene.cameras.main.worldView.y + 750) {

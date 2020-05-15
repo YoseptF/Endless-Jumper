@@ -22,7 +22,8 @@ const setDOMUsername = () => {
 };
 
 const getDOMUsername = () => {
-  const username = document.querySelector('.usernameInput input').value;
+  let username = document.querySelector('.usernameInput input').value;
+  username = username === '' ? 'plyr' : username;
   localStorage.setItem('username', username);
   document.querySelector('.usernameInput').innerHTML = '';
   return username;

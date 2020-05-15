@@ -2,10 +2,10 @@
 
 ## Jump as high as you can and brag about it!!
 
-<div class="imagesTop">
-<img src="https://i.imgur.com/SnGDczx.png" style="width:32%">
-<img src="https://i.imgur.com/SENwgI1.png" style="width:32%">
-<img src="https://i.imgur.com/elwCX5Z.png" style="width:32%">
+<div class="imagesTop" style="display: flex; justify-content: space-around;">
+<img src="https://i.imgur.com/aL0WyCE.png" width=30%>
+<img src="https://i.imgur.com/6I1LT6w.png" width=30%>
+<img src="https://i.imgur.com/R252kQU.png" width=30%>
 </div>
 
 ---

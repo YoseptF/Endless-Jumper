@@ -13,6 +13,7 @@ import {
   positionPlatforms,
   warpPlayer
 } from '../packages/gameController';
+import { gyroscopePlayerMovement } from '../packages/DOMInteractions';
 
 let plyr
 let bckg
@@ -76,7 +77,7 @@ const instructionsScene = new Phaser.Class({
     })
     secondArrow.setRotation(4.75)
     console.log(firstArrow);
-    this.add.text(62, 360, 'You bouce from platforms', {
+    this.add.text(52, 360, 'You bounce from platforms', {
       align: 'right',
       wordWrap: {
         width: 160
@@ -137,9 +138,12 @@ const instructionsScene = new Phaser.Class({
       'Back',
       'Roboto',
       () => {
+        this.scene.pause()
         jump = false
         plyr = null
+        instructionsPlats = []
         plats = []
+        this.scene.stop()
         this.scene.start('menuScene')
       }
     )
@@ -148,6 +152,7 @@ const instructionsScene = new Phaser.Class({
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
       jump = true
     });
+    gyroscopePlayerMovement(plyr)
   },
 
   update() {

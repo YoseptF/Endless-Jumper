@@ -37,14 +37,22 @@ const player = (scene) => {
   const thrust = (force) => {
     playerBody.thrust(force)
   }
-  const setVelocityX = (x,y) => {
-    playerBody.setVelocityX(x,y)
+  const setVelocityX = (x) => {
+    playerBody.setVelocityX(x)
+  }
+  const setVelocityY = (y) => {
+    playerBody.setVelocityY(y)
+  }
+  const freeze = () => {
+    playerBody.setFrictionAir(100)
   }
 
   return {
     create,
     destroy,
+    freeze,
     setVelocityX,
+    setVelocityY,
     thrustLeft,
     thrustBack,
     thrust,

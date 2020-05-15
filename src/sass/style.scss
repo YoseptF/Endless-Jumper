@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -14,6 +16,46 @@ body {
   justify-content: center;
   align-items: center;
   background: #2f80a3;
+}
+
+.usernameInput {
+  input {
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+    font-size: 1.5rem;
+    padding: 12px 8px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  table {
+    text-align: center;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    z-index: 13;
+    font-size: 1.5rem;
+    padding: 12px 8px;
+    font-weight: bold;
+    border-radius: 10px;
+    th{
+      padding: 24px;
+    }
+    td{
+      padding: 12px;
+    }
+    thead {
+      background: white;
+    }
+    tbody {
+      background: #4689a5b5;
+    }
+  }
 }
 
 #phaser-canvas {

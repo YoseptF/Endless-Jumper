@@ -5,12 +5,14 @@ import { basicPlatform } from '../packages/platforms';
 import { chooseJumplablePlatforms, PlayerMovement } from '../packages/gameController';
 import { button } from '../packages/UI';
 import WebFontFile from '../packages/webFontFile';
+import { gyroscopePlayerMovement } from '../packages/DOMInteractions';
 
 let plyr
 let bckg
 let plat
 let jump
 let cursors
+let bckPos = 0
 
 const menuScene = new Phaser.Class({
 
@@ -54,15 +56,44 @@ const menuScene = new Phaser.Class({
       () => this.scene.start('instructionsScene')
     )
 
+    button(
+      this,
+      200,
+      300,
+      'Leaderboards',
+      'Roboto',
+      () => this.scene.start('leaderboardScene')
+    )
+
+    button(
+      this,
+      250,
+      350,
+      'Credits',
+      'Roboto',
+      () => this.scene.start('creditsScene')
+    )
+
     cursors = this.input.keyboard.createCursorKeys();
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
       jump = true
     });
+
+    gyroscopePlayerMovement(plyr)
   },
 
   update() {
     chooseJumplablePlatforms(this, [plat], plyr)
     jump = PlayerMovement(jump, plyr, cursors)
+    if (plyr.y > 750) {
+      plyr.x = 80
+      plyr.y = 500
+      plyr.setVelocityY(0)
+      plyr.setVelocityX(0)
+    }
+    bckg.tilePositionX = Math.sin(bckPos) * 700
+    bckg.tilePositionY = Math.cos(bckPos) * 400
+    bckPos += 0.01
   },
 
 });

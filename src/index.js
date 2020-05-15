@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import './sass/style.scss';
-import { gameScene, menuScene, instructionsScene } from './scenes/sceneLoader';
+import { gameScene, menuScene, instructionsScene, creditsScene, leaderboardScene } from './scenes/sceneLoader';
 
 window.onload = () => {
     let canvas = document.querySelector('canvas')
@@ -19,7 +19,7 @@ const config = {
         height: 750
     },
     backgroundColor: '#46a6ce',
-    scene: [instructionsScene, menuScene, gameScene],
+    scene: [menuScene, gameScene, instructionsScene, creditsScene, leaderboardScene],
     physics: {
         default: 'matter',
         matter: {

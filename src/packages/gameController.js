@@ -1,7 +1,11 @@
 import { player } from './player'
 import { background } from './enviroment'
 import { basicPlatform } from './platforms';
-import { gyroscopePlayerMovement } from './DOMInteractions';
+import { gyroscopePlayerMovement, setDOMUsername, getDOMUsername } from './DOMInteractions';
+import { button } from './UI';
+import { setNewScore, getTopScores } from './leaderboard';
+import 'regenerator-runtime'
+
 
 let bckg;
 let plyr
@@ -11,6 +15,17 @@ let plats = []
 let jump = false
 let gammaMultiplier = 0.015
 let cursors
+let points
+let alive = true
+
+const setMarkers = async (scene) => {
+  let top = await getTopScores()
+
+  top.forEach(val => {
+    console.log(val.user);
+    scene.add.text(0, -val.score / 0.03, `--- ${val.user} - ${val.score}`, {})
+  })
+}
 
 const createPlatforms = (num, scene, container) => {
   for (let i = 0; i < num; i++) {
@@ -71,7 +86,7 @@ const updateHeight = (scene) => {
   let gameObjectCanvasY = plyr.y - scene.cameras.main.scrollY * plyr.scrollFactorY
 
   if (gameObjectCanvasY < 350) {
-    bckg.tilePositionY += 4;
+    bckg.tilePositionY += 6;
     scroll -= 6
     scene.cameras.main.setScroll(0, scroll)
   }
@@ -102,13 +117,50 @@ const warpPlayer = (ply) => {
 }
 
 const startGameOver = (scene) => {
-  scene.scene.pause()
-
-  plats = []
-  plyr = null
+  alive = false
   scroll = 0
-  scene.scene.stop()
-  scene.scene.start('menuScene');
+  setDOMUsername()
+  scene.add.text(165, 400 + scene.cameras.main.scrollY, `${points.text}`, {
+    align: 'center'
+  })
+  const finalPoints = plyr.y > 0 ? 0 : Math.trunc(-plyr.y * 0.03)
+  button(
+    scene,
+    150,
+    250 + scene.cameras.main.scrollY,
+    'Play Again',
+    'Roboto',
+    () => {
+      const user = getDOMUsername()
+      setNewScore(user, finalPoints)
+
+      plats = []
+      plyr = null
+      alive = true
+
+      scene.scene.restart()
+    }
+  )
+  button(
+    scene,
+    150,
+    300 + scene.cameras.main.scrollY,
+    'Main Menu',
+    'Roboto',
+    () => {
+      const user = getDOMUsername()
+      setNewScore(user, finalPoints)
+
+      plats = []
+      plyr = null
+      alive = true
+
+      scene.scene.stop()
+      scene.scene.start('menuScene')
+    }
+  )
+
+  // scene.scene.pause()
 }
 
 const inspectWorldview = (scene) => {
@@ -146,10 +198,15 @@ const gameController = (scene) => {
   }
 
   const create = (platformOptions) => {
+    setMarkers(scene)
     bckg.create(200, 50)
     plyr.create(210, 0)
     positionPlatforms(platformOptions, plats)
     gyroscopePlayerMovement(plyr);
+
+    points = scene.add.text(0, scene.cameras.main.scrollY, `0 points`, {
+      align: 'center'
+    })
 
     cursors = scene.input.keyboard.createCursorKeys();
     scene.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
@@ -158,10 +215,14 @@ const gameController = (scene) => {
   }
 
   const update = () => {
-    setMaxSpeed()
-    updateHeight(scene)
-    jump = PlayerMovement(jump, plyr, cursors)
-    inspectWorldview(scene)
+    if (alive) {
+      points.text = plyr.y > 0 ? '0 points' : `${Math.trunc(-plyr.y * 0.03)} points`
+      points.y = scene.cameras.main.scrollY
+      setMaxSpeed()
+      updateHeight(scene)
+      jump = PlayerMovement(jump, plyr, cursors)
+      inspectWorldview(scene)
+    }
   }
 
   return {

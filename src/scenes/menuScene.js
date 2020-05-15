@@ -6,6 +6,7 @@ import { chooseJumplablePlatforms, PlayerMovement } from '../packages/gameContro
 import button from '../packages/UI';
 import WebFontFile from '../packages/webFontFile';
 import { gyroscopePlayerMovement } from '../packages/DOMInteractions';
+import titleImage from '../images/title.png';
 
 let plyr;
 let bckg;
@@ -27,6 +28,7 @@ const menuScene = new Phaser.Class({
 
   preload() {
     this.load.addFile(new WebFontFile(this.load, 'Roboto'));
+    this.load.image('title', titleImage);
 
     bckg = background(this);
     plyr = player(this);
@@ -37,6 +39,8 @@ const menuScene = new Phaser.Class({
     bckg.create();
     plyr.create(75, 500);
     plat.create(75, 600);
+
+    this.add.image(210, 120, 'title');
 
     button(
       this,

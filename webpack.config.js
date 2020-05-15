@@ -73,7 +73,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.ejs",
-      title: "Phaser"
+      title: "Endless Jumper",
+      favicon: './src/images/favicon.ico'
     }),
     new BrowserSyncPlugin({
       https: true,

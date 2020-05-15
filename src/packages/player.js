@@ -36,7 +36,9 @@ const player = (scene) => {
     playerBody.thrust(force);
   };
   const setVelocityX = (x) => {
-    playerBody.setVelocityX(x);
+    if (playerBody.body) {
+      playerBody.setVelocityX(x);
+    }
   };
   const setVelocityY = (y) => {
     playerBody.setVelocityY(y);

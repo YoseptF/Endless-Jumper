@@ -1,5 +1,10 @@
 import {
-  chooseJumplablePlatforms, PlayerMovement, createPlatforms, positionPlatforms, warpPlayer, gameController,
+  chooseJumplablePlatforms,
+  PlayerMovement,
+  createPlatforms,
+  positionPlatforms,
+  warpPlayer,
+  gameController,
 } from '../src/packages/gameController';
 import scene from './mocks/scene';
 

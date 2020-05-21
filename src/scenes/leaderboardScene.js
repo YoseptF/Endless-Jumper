@@ -2,11 +2,17 @@ import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
 import button from '../packages/UI';
 import { getTopScores } from '../packages/leaderboard';
 import 'regenerator-runtime'; // eslint-disable-line import/no-unresolved
-import { setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading } from '../packages/DOMInteractions';
+import {
+  setDOMleaderboard, deleteDOMLeaderboard, setDOMLoading, setDOMAlert,
+} from '../packages/DOMInteractions';
 
 const setLeaderboard = async () => {
-  const topScores = await getTopScores();
-  setDOMleaderboard(topScores);
+  try {
+    const topScores = await getTopScores();
+    setDOMleaderboard(topScores);
+  } catch (e) {
+    setDOMAlert(e);
+  }
 };
 
 let alert;

@@ -11,11 +11,14 @@ const gyroscopePlayerMovement = (plyr) => {
   }
 };
 
-const setDOMUsername = () => {
+const setDOMUsername = (Xpos = null, Ypos = null, message = null) => {
   const username = localStorage.getItem('username');
   const userShown = username === null ? 'plyr' : username;
   const usernameInput = `
-  <input type="text" placeholder="Enter your username" value="${userShown}" pattern="[A-Za-z0-9]+"></input>
+  <div class="inputBox" ${Xpos ? `style="left:${Xpos}%;top:${Ypos || 0}%;transform:translate(-${Xpos}%,-${Ypos || 0}%);"` : ''}>
+    <label>${message || ''}</label>
+    <input type="text" placeholder="Enter your username" value="${userShown}" pattern="[A-Za-z0-9]+"></input>
+  </div>
   `;
 
   document.querySelector('.usernameInput').innerHTML = usernameInput;
@@ -66,7 +69,22 @@ const deleteDOMLeaderboard = () => {
   document.querySelector('.usernameInput').innerHTML = '';
 };
 
+const setDOMAlert = (message) => {
+  const alert = `
+    <span>${message}</span>
+  `;
+
+  const mainAlert = document.querySelector('.mainAlert');
+
+  mainAlert.innerHTML = alert;
+
+  setTimeout(() => {
+    document.querySelector('.mainAlert span').classList.add('hidden');
+  }, 1500);
+};
+
 export {
+  setDOMAlert,
   gyroscopePlayerMovement,
   setDOMUsername,
   getDOMUsername,

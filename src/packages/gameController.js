@@ -2,7 +2,9 @@ import Phaser from 'phaser'; // eslint-disable-line import/no-unresolved
 import player from './player';
 import background from './enviroment';
 import basicPlatform from './platforms';
-import { gyroscopePlayerMovement, setDOMUsername, getDOMUsername } from './DOMInteractions';
+import {
+  gyroscopePlayerMovement, setDOMUsername, getDOMUsername, setDOMAlert,
+} from './DOMInteractions';
 import button from './UI';
 import { getTopScores, setNewScore } from './leaderboard';
 import 'regenerator-runtime'; // eslint-disable-line import/no-unresolved
@@ -20,11 +22,15 @@ let alive = true;
 let alert = null;
 
 const setMarkers = async (scene) => {
-  const top = await getTopScores();
+  try {
+    const top = await getTopScores();
 
-  top.forEach(val => {
-    scene.add.text(0, -val.score / 0.03, `--- ${val.user} - ${val.score}`, {});
-  });
+    top.forEach(val => {
+      scene.add.text(0, -val.score / 0.03, `--- ${val.user} - ${val.score}`, {});
+    });
+  } catch (e) {
+    setDOMAlert(e);
+  }
 };
 
 const createPlatforms = (num, scene, container) => {

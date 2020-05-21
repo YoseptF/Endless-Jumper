@@ -5,7 +5,7 @@ import basicPlatform from '../packages/platforms';
 import { chooseJumplablePlatforms, PlayerMovement } from '../packages/gameController';
 import button from '../packages/UI';
 import WebFontFile from '../packages/webFontFile';
-import { gyroscopePlayerMovement } from '../packages/DOMInteractions';
+import { gyroscopePlayerMovement, setDOMUsername, getDOMUsername } from '../packages/DOMInteractions';
 import titleImage from '../images/title.png';
 
 let plyr;
@@ -48,7 +48,10 @@ const menuScene = new Phaser.Class({
       200,
       'Play!!',
       'Roboto',
-      () => this.scene.start('gameScene'),
+      () => {
+        getDOMUsername();
+        this.scene.start('gameScene');
+      },
     );
 
     button(
@@ -77,6 +80,8 @@ const menuScene = new Phaser.Class({
       'Roboto',
       () => this.scene.start('creditsScene'),
     );
+
+    setDOMUsername(53, 60, 'Your current username');
 
     cursors = this.input.keyboard.createCursorKeys();
     this.matter.world.on('collisionstart', () => {

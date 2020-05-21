@@ -18,6 +18,29 @@ body {
   background: #2f80a3;
 }
 
+.mainAlert {
+  position: absolute;
+  z-index: 15;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -5%);
+  span {
+    max-width: 300px;
+    display: inline-block;
+    word-wrap: break-word;
+    border: 1px solid red;
+    background: lighten(red, 20%);
+    border-radius: 4px;
+    padding: 18px;
+    transition: all 1.2s ease-in-out;
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
 .usernameInput {
   i {
     position: absolute;
@@ -26,17 +49,21 @@ body {
     transform: translate(-50%, -50%);
     z-index: 13;
   }
-  input {
+  .inputBox {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     font-family: "Roboto", sans-serif;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 13;
-    font-size: 1.5rem;
-    padding: 12px 8px;
     font-weight: bold;
-    border-radius: 10px;
+    input {
+      font-size: 1.5rem;
+      padding: 12px 8px;
+      border-radius: 10px;
+    }
     @media only screen and (max-width: 600px) {
       width: 60vw;
       font-size: 0.9rem;

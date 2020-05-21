@@ -1,6 +1,11 @@
 import LocalStorageMock from './mocks/localstorage';
 import {
-  setDOMUsername, getDOMUsername, setDOMLoading, setDOMleaderboard, deleteDOMLeaderboard,
+  setDOMUsername,
+  getDOMUsername,
+  setDOMLoading,
+  setDOMleaderboard,
+  deleteDOMLeaderboard,
+  setDOMAlert,
 } from '../src/packages/DOMInteractions';
 
 global.localStorage = LocalStorageMock();
@@ -9,6 +14,7 @@ describe('DOMInteractions functions: ', () => {
   document.body.innerHTML = `
   <div class="dummy-selector"></div>
   <div class="usernameInput"></div>
+  <div class="mainAlert"></div>
   `;
 
   describe(
@@ -92,5 +98,12 @@ describe('DOMInteractions functions: ', () => {
     const value = document.querySelector('.usernameInput').innerHTML;
 
     expect(value).toEqual('');
+  });
+
+  test('setDOMAlert | creates an alert on the DOM with the message given', () => {
+    setDOMAlert('test-alert');
+    const value = document.querySelector('.mainAlert span').innerHTML;
+
+    expect(value).toEqual('test-alert');
   });
 });

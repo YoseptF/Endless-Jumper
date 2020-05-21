@@ -7,7 +7,7 @@
         "start": "webpack --mode=development --watch",
         "build": "webpack --mode=production",
         "watch": "webpack --watch",
-        "test": "jest --watch"
+        "test": "jest --verbose --watch"
     },
     "author": "Christopher Geary",
     "license": "MIT",

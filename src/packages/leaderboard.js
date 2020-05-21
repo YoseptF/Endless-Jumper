@@ -49,6 +49,7 @@ const setNewScore = async (user, score) => {
 
     const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/LWWHqD0A5Z7ib3isiCmA/scores', requestOptions);
     response.text();
+    return 0;
   } catch (e) {
     setDOMAlert(`${e} | Your data may not have been saved, :(`);
     return e;

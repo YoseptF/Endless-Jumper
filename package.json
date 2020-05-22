@@ -6,26 +6,46 @@
     "scripts": {
         "start": "webpack --mode=development --watch",
         "build": "webpack --mode=production",
-        "watch": "webpack --watch"
+        "watch": "webpack --watch",
+        "test": "jest --verbose --watch"
     },
     "author": "Christopher Geary",
     "license": "MIT",
     "dependencies": {
-        "phaser": "^3.15.1"
+        "jest": "^26.0.1",
+        "phaser": "^3.15.1",
+        "regenerator-runtime": "^0.13.5",
+        "webfontloader": "^1.6.28"
     },
     "devDependencies": {
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.1.2",
         "@babel/core": "^7.1.2",
         "@babel/preset-env": "^7.1.0",
         "babel-loader": "^8.0.4",
         "browser-sync": "^2.26.3",
         "browser-sync-webpack-plugin": "^2.2.2",
         "clean-webpack-plugin": "^3.0.0",
-        "html-webpack-plugin": "^3.2.0",
         "css-loader": "^3.5.3",
+        "eslint": "^7.0.0",
+        "eslint-config-airbnb-base": "^14.1.0",
+        "eslint-plugin-import": "^2.20.2",
+        "file-loader": "^6.0.0",
+        "html-loader": "^1.1.0",
+        "html-webpack-plugin": "^3.2.0",
+        "image-webpack-loader": "^6.0.0",
+        "jest-canvas-mock": "^2.2.0",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
-        "style-loader": "^1.2.1"
+        "style-loader": "^1.2.1",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.1.2"
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/mocks/fileMock.js",
+            "\\.(css|less)$": "<rootDir>/tests/mocks/styleMock.js"
+        },
+        "setupFiles": [
+            "jest-canvas-mock"
+        ]
     }
 }

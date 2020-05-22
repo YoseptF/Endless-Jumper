@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -7,11 +15,120 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2f3035;
+  background: #2f80a3;
+}
+
+.mainAlert {
+  position: absolute;
+  z-index: 15;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -5%);
+  span {
+    max-width: 300px;
+    display: inline-block;
+    word-wrap: break-word;
+    border: 1px solid red;
+    background: lighten(red, 20%);
+    border-radius: 4px;
+    padding: 18px;
+    transition: all 1.2s ease-in-out;
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0 !important;
+}
+
+.usernameInput {
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+  }
+  .inputBox {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+    font-weight: bold;
+    input {
+      font-size: 1.5rem;
+      padding: 12px 8px;
+      border-radius: 10px;
+    }
+    @media only screen and (max-width: 600px) {
+      width: 60vw;
+      font-size: 0.9rem;
+      padding: 9px 6px;
+    }
+  }
+  table {
+    text-align: center;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 13;
+    font-size: 1.5rem;
+    padding: 12px 8px;
+    font-weight: bold;
+    border-radius: 10px;
+
+    @media only screen and (max-width: 600px) {
+      top: 75%;
+      left: 65%;
+      transform: translate(-65%, -75%);
+      font-size: 0.8rem;
+    }
+    th {
+      padding: 24px;
+    }
+    td {
+      padding: 12px;
+    }
+    thead {
+      background: white;
+    }
+    tbody {
+      background: #4689a5b5;
+    }
+  }
 }
 
 #phaser-canvas {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
+  position: relative;
+  #fullscreen {
+    display: none;
+    margin-top: 12px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+
+    @media screen and (orientation: portrait) {
+      display: block;
+    }
+
+    i {
+      background: rgba(0, 0, 0, 0.219);
+      border-radius: 100%;
+      padding: 8px;
+      &:hover {
+        background: rgba(0, 0, 0, 0.377);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 canvas {
